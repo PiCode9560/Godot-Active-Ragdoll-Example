@@ -1,0 +1,373 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Ragdoll2.glb" type="PackedScene" id=1]
+[ext_resource path="res://Ragdoll4.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.331507, 0.605986, 0.716304 )
+
+[sub_resource type="CapsuleShape" id=3]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CapsuleShape" id=4]
+radius = 0.15
+height = 0.642931
+
+[sub_resource type="SphereShape" id=14]
+radius = 0.3
+
+[sub_resource type="CapsuleShape" id=6]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CapsuleShape" id=7]
+radius = 0.15
+height = 0.642931
+
+[sub_resource type="CapsuleShape" id=9]
+radius = 0.15
+height = 0.543997
+
+[sub_resource type="CapsuleShape" id=11]
+radius = 0.15
+height = 0.543997
+
+[sub_resource type="SphereShape" id=13]
+radius = 0.5
+
+[node name="Ragdoll2" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Physical Bone Body" type="PhysicalBone" parent="Armature001/Skeleton" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322065, 0 )
+collision_layer = 2
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.322065, 0 )
+body_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.322065, 0 )
+bone_name = "Body"
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone Body" index="0"]
+transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.147567, 0 )
+shape = SubResource( 12 )
+
+[node name="JumpRayCast" type="RayCast" parent="Armature001/Skeleton/Physical Bone Body" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.429553, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.066, 0 )
+
+[node name="Physical Bone RightArm2" type="PhysicalBone" parent="Armature001/Skeleton" index="2"]
+transform = Transform( 1, -1.79013e-12, -3.00458e-05, -3.00435e-05, 0.0127051, -0.99992, 3.8174e-07, 0.999919, 0.0127051, 3.55555e-12, 0.766669, 0.691841 )
+collision_layer = 2
+joint_type = 2
+body_offset = Transform( 1, 0, 6.05995e-11, 0, 1, 0, 6.06626e-13, 9.31323e-10, 1, 0, 0, 0 )
+bone_name = "RightArm2"
+joint_constraints/swing_span = 90.0
+joint_constraints/twist_span = 180.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone RightArm2" index="0"]
+transform = Transform( 1, 6.70353e-12, 2.84217e-14, 0, -2.79397e-09, 1, 6.0485e-13, -1, -9.31323e-10, 8.92232e-08, 0.233712, 0.00296956 )
+shape = SubResource( 3 )
+
+[node name="Physical Bone RightArm3" type="PhysicalBone" parent="Armature001/Skeleton" index="3"]
+transform = Transform( 1, -1.87583e-12, -2.19352e-05, -2.19343e-05, -0.00904943, -0.999959, -1.98497e-07, 0.999959, -0.00904943, 1.92051e-11, 0.773951, 1.63352 )
+collision_layer = 2
+joint_type = 2
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3207e-08, -0.368664, 0.00333822 )
+body_offset = Transform( 1, 0, -8.53317e-13, -1.42109e-14, 1, 0, -8.78075e-13, 0, 1, -7.3207e-08, 0.368664, -0.00333822 )
+bone_name = "RightArm3"
+joint_constraints/swing_span = 90.0
+joint_constraints/twist_span = 10.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone RightArm3" index="0"]
+transform = Transform( 1, 8.53317e-13, 0, -1.42109e-14, 0, 1, -8.78075e-13, -1, 0, -4.26953e-08, 0.215115, -0.00194663 )
+shape = SubResource( 4 )
+
+[node name="Area" type="Area" parent="Armature001/Skeleton/Physical Bone RightArm3" index="1"]
+transform = Transform( 1, 0, -8.53317e-13, -1.42109e-14, 1, 0, -8.78075e-13, 0, 1, 8.55034e-08, 0.435364, 0.00389814 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone RightArm3/Area" index="0"]
+shape = SubResource( 14 )
+
+[node name="GrabJoint" type="PinJoint" parent="Armature001/Skeleton/Physical Bone RightArm3" index="2"]
+transform = Transform( 1, 0, -8.53317e-13, -1.42109e-14, 1, 0, -8.78075e-13, 0, 1, -8.66021e-08, 0.436281, -0.00394815 )
+
+[node name="Physical Bone LeftArm2" type="PhysicalBone" parent="Armature001/Skeleton" index="4"]
+transform = Transform( 1, 1.84253e-12, -2.52723e-05, 2.52703e-05, 0.0127051, 0.99992, 3.21089e-07, -0.999919, 0.0127051, -1.46646e-13, 0.766669, -0.691841 )
+collision_layer = 2
+joint_type = 2
+body_offset = Transform( 1, 9.09495e-13, 9.22258e-11, 0, 1, 0, -5.30243e-13, -9.31323e-10, 1, 0, 0, 0 )
+bone_name = "LeftArm2"
+joint_constraints/swing_span = 90.0
+joint_constraints/twist_span = 180.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone LeftArm2" index="0"]
+transform = Transform( 1, -8.55227e-12, 5.68434e-14, 0, -1.86265e-09, 1, -4.16955e-12, -1, 0, -7.92334e-08, 0.246746, -0.0031352 )
+shape = SubResource( 6 )
+
+[node name="Physical Bone LeftArm3" type="PhysicalBone" parent="Armature001/Skeleton" index="5"]
+transform = Transform( 1, 1.02318e-12, -2.19345e-05, 2.19336e-05, -0.00904943, 0.999959, -1.98494e-07, -0.999959, -0.00904943, 1.60479e-12, 0.773949, -1.37729 )
+collision_layer = 2
+joint_type = 2
+joint_offset = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23208e-08, -0.112447, -0.00101763 )
+body_offset = Transform( 1, 0, -9.04721e-13, 5.68434e-13, 1, 0, 2.63781e-11, 0, 1, 2.23208e-08, 0.112447, 0.00101763 )
+bone_name = "LeftArm3"
+joint_constraints/swing_span = 90.0
+joint_constraints/twist_span = 10.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone LeftArm3" index="0"]
+transform = Transform( 1, 9.04721e-13, 0, 1.27898e-13, 0, 1, -9.06941e-13, -1, 0, 9.45292e-08, 0.476222, 0.00430983 )
+shape = SubResource( 7 )
+
+[node name="Area2" type="Area" parent="Armature001/Skeleton/Physical Bone LeftArm3" index="1"]
+transform = Transform( 1, -3.96974e-07, -4.38661e-05, 3.96983e-07, -0.999836, 0.0180981, -4.38662e-05, -0.0180981, -0.999836, -3.81096e-08, 0.673926, -0.00173759 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone LeftArm3/Area2" index="0"]
+shape = SubResource( 14 )
+
+[node name="GrabJoint" type="PinJoint" parent="Armature001/Skeleton/Physical Bone LeftArm3" index="2"]
+transform = Transform( 1, -3.96974e-07, -4.38661e-05, 3.96983e-07, -0.999836, 0.0180981, -4.38662e-05, -0.0180981, -0.999836, 1.33608e-07, 0.672867, 0.0060907 )
+
+[node name="Physical Bone RightLeg2" type="PhysicalBone" parent="Armature001/Skeleton" index="6"]
+transform = Transform( 1, 3.68594e-14, -1.00655e-10, 2.89502e-12, -0.999986, -0.00533252, 3.34667e-11, 0.00534526, -0.999705, 1.57754e-13, -0.298559, 0.382488 )
+collision_layer = 2
+joint_type = 2
+body_offset = Transform( 1, 0, 0, -4.35036e-18, 1, 0, -1.11022e-16, 0, 1, 0, 0, 0 )
+bone_name = "RightLeg2"
+joint_constraints/swing_span = 90.0
+joint_constraints/twist_span = 10.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone RightLeg2" index="0"]
+transform = Transform( 1, 0, 0, -9.48677e-20, 0, 1, -6.93889e-18, -1, 0, 1.74204e-13, 0.347486, 0.00185794 )
+shape = SubResource( 9 )
+
+[node name="Physical Bone LeftLeg2" type="PhysicalBone" parent="Armature001/Skeleton" index="7"]
+transform = Transform( 1, 5.2669e-13, -1.00684e-10, -2.33191e-12, -0.999986, 0.00533252, 3.34524e-11, -0.00534526, -0.999705, -2.31929e-14, -0.298559, -0.382488 )
+collision_layer = 2
+joint_type = 2
+body_offset = Transform( 1, 0, 0, 5.42101e-20, 1, 0, 0, 0, 1, 0, 0, 0 )
+bone_name = "LeftLeg2"
+joint_constraints/swing_span = 90.0
+joint_constraints/twist_span = 10.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone LeftLeg2" index="0"]
+transform = Transform( 1, 0, 0, 5.42101e-20, 0, 1, 0, -1, 0, -3.70086e-13, 0.347486, -0.00185794 )
+shape = SubResource( 11 )
+
+[node name="Physical Bone Head2" type="PhysicalBone" parent="Armature001/Skeleton" index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2101, 0 )
+collision_layer = 2
+joint_type = 2
+bone_name = "Head2"
+joint_constraints/swing_span = 45.0
+joint_constraints/twist_span = 180.0
+joint_constraints/bias = 0.3
+joint_constraints/softness = 0.8
+joint_constraints/relaxation = 1.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Armature001/Skeleton/Physical Bone Head2" index="0"]
+transform = Transform( 1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.638122, 0 )
+shape = SubResource( 13 )
+
+[node name="BodyControl" type="Spatial" parent="." index="1"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="BodyControl" index="0"]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="BodyControl" index="1"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone Body")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 100.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 100.0
+angular_spring_z/damping = 10.0
+
+[node name="Generic6DOFJoint2" type="Generic6DOFJoint" parent="BodyControl" index="2"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone Head2")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 100.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 100.0
+angular_spring_z/damping = 10.0
+
+[node name="LeftLegControl" type="Spatial" parent="." index="2"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="LeftLegControl" index="0"]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="LeftLegControl" index="1"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone LeftLeg2")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 400.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 400.0
+angular_spring_z/damping = 10.0
+
+[node name="RightLegControl" type="Spatial" parent="." index="3"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="RightLegControl" index="0"]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="RightLegControl" index="1"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone RightLeg2")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 400.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 400.0
+angular_spring_z/damping = 10.0
+
+[node name="RightArmControl" type="Spatial" parent="." index="4"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="RightArmControl" index="0"]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="RightArmControl" index="1"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone RightArm2")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 400.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 400.0
+angular_spring_z/damping = 10.0
+
+[node name="Generic6DOFJoint2" type="Generic6DOFJoint" parent="RightArmControl" index="2"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone RightArm3")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 400.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 400.0
+angular_spring_z/damping = 10.0
+
+[node name="LeftArmControl" type="Spatial" parent="." index="5"]
+
+[node name="StaticBody" type="StaticBody" parent="LeftArmControl" index="0"]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="LeftArmControl" index="1"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone LeftArm2")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 400.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 400.0
+angular_spring_z/damping = 10.0
+
+[node name="Generic6DOFJoint2" type="Generic6DOFJoint" parent="LeftArmControl" index="2"]
+nodes/node_a = NodePath("../../Armature001/Skeleton/Physical Bone LeftArm3")
+nodes/node_b = NodePath("../StaticBody")
+linear_limit_x/enabled = false
+angular_limit_x/enabled = false
+angular_spring_x/enabled = true
+angular_spring_x/stiffness = 400.0
+angular_spring_x/damping = 10.0
+linear_limit_y/enabled = false
+angular_limit_y/enabled = false
+angular_spring_y/enabled = true
+angular_spring_y/stiffness = 200.0
+angular_spring_y/damping = 10.0
+linear_limit_z/enabled = false
+angular_limit_z/enabled = false
+angular_spring_z/enabled = true
+angular_spring_z/stiffness = 400.0
+angular_spring_z/damping = 10.0
+
+[node name="CameraPivot" type="Spatial" parent="." index="6"]
+
+[node name="SpringArm" type="SpringArm" parent="CameraPivot" index="0"]
+spring_length = 10.0
+
+[node name="Camera" type="Camera" parent="CameraPivot/SpringArm" index="0"]
+
+[connection signal="body_entered" from="Armature001/Skeleton/Physical Bone RightArm3/Area" to="." method="_on_RightHand_body_entered"]
+[connection signal="body_entered" from="Armature001/Skeleton/Physical Bone LeftArm3/Area2" to="." method="_on_LeftHand_body_entered"]
